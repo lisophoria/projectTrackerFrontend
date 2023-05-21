@@ -1,6 +1,7 @@
 import {FC} from "react";
-import AbstractLayout from "../abstract/abstractLayout";
+import AbstractLayout from "../../abstract/abstractLayout";
 import {Box} from "@mui/material";
+import Sidebar from "../sidebar";
 
 const BasicLayout: FC = () => {
   return (
@@ -15,7 +16,7 @@ const BasicLayout: FC = () => {
           <Box sx={{ backgroundColor: 'red' }}>header</Box>
         )}
         leftBlock={(
-          <Box sx={{ backgroundColor: 'blue', height: '100%' }}>sidebar</Box>
+          <Sidebar />
         )}
       >
         <Box sx={{ backgroundColor: 'pink', height: '100%' }}>content</Box>
