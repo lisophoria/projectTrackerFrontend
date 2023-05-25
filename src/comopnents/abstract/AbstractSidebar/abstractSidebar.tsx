@@ -2,10 +2,12 @@ import {FC, PropsWithChildren} from "react";
 import {
   Box,
   Tabs as MuiTabs,
-  Tab as MuiTab, Divider,
+  Tab as MuiTab,
 } from "@mui/material";
 import useAbstractSidebarStyles from "./abstractSidebar.styles";
 import {Link, useLocation} from "react-router-dom";
+import Profile from "./components/Profile";
+import {IUser} from "../../store/model/user";
 
 interface ISidebarTab {
   icon?: JSX.Element;
@@ -14,7 +16,9 @@ interface ISidebarTab {
 }
 
 interface IAbstractSidebarProps {
+  user: IUser;
   tabs: ISidebarTab[];
+  onLogoutClick: () => void;
 }
 
 const AbstractSidebar: FC<PropsWithChildren<IAbstractSidebarProps>> = (props) => {
@@ -24,8 +28,13 @@ const AbstractSidebar: FC<PropsWithChildren<IAbstractSidebarProps>> = (props) =>
   return (
     <Box className={classes.sidebarContainer}>
       <Box className={classes.contentWrapper}>
-        <Box>Profile</Box>
-        <Divider />
+        <Profile
+          onLogoutClick={props.onLogoutClick}
+          name={props.user.username ?? 'User'}
+          sx={{
+            padding: '18px 18px 0 18px',
+          }}
+        />
         <MuiTabs
           value={pathname}
           orientation={'vertical'}
@@ -43,7 +52,6 @@ const AbstractSidebar: FC<PropsWithChildren<IAbstractSidebarProps>> = (props) =>
             />
           ))}
         </MuiTabs>
-        <Divider />
       </Box>
       <Box className={classes.childrenWrapper}>
         {props.children}

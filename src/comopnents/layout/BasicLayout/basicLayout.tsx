@@ -16,7 +16,11 @@ const BasicLayout: FC = () => {
           <Box sx={{ backgroundColor: 'red' }}>header</Box>
         )}
         leftBlock={(
-          <Sidebar />
+          <Sidebar
+            onLogoutClick={() => {/* TODO */}}
+            onAddCategoryClick={() => {/* TODO */}}
+            onCreateTaskClick={() => {/* TODO */}}
+          />
         )}
       >
         <Box sx={{ backgroundColor: 'pink', height: '100%' }}>content</Box>

@@ -13,20 +13,20 @@ export const MuiButtonVariantByButtonType = {
 export const MuiButtonStyleByButtonType = {
   [ButtonTypes.PRIMARY]: {
     color: '#fff',
-    backgroundColor: '#85b0ff',
+    backgroundColor: '#0767DB',
     fontSize: '18px',
     ':hover': {
-      backgroundColor: '#739ff0',
+      backgroundColor: '#0552af',
     },
   },
   [ButtonTypes.SECONDARY]: {
-    color: '#85b0ff',
-    borderColor: '#85b0ff',
+    color: '#0767DB',
+    borderColor: '#0767DB',
     backgroundColor: '#fff',
     fontSize: '18px',
     ':hover': {
-      color: '#739ff0',
-      backgroundColor: '#739ff0',
+      color: '#fff',
+      backgroundColor: '#0767DB',
     },
   },
   [ButtonTypes.ACCENT]: {

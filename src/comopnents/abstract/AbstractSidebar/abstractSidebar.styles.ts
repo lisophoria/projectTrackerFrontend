@@ -28,7 +28,7 @@ const useAbstractSidebarStyles = makeStyles()({
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-      minHeight: '40px',
+      minHeight: '45px',
       textTransform: 'none',
       fontSize: '16px',
       lineHeight: '20px',

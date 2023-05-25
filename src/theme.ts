@@ -14,8 +14,10 @@ const theme = createTheme(({
     MuiButton: {
       styleOverrides: {
         root: {
+          boxShadow: 'none',
           ':hover': {
             transform: 'scale(1)',
+            boxShadow: 'none',
           }
         }
       }
