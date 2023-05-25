@@ -2,38 +2,48 @@ import {makeStyles} from "tss-react/mui";
 
 const useAbstractSidebarStyles = makeStyles()({
   sidebarContainer: {
-    width: '210px',
+    display: 'flex',
+    flexDirection: 'column',
+    width: '300px',
     height: '100%',
-    padding: '20px 0',
+    boxSizing: 'border-box',
     backgroundColor: '#F4F5F7',
   },
+  contentWrapper: {
+    flex: '0',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '18px'
+  },
   tabs: {
+    minHeight: 0,
     '& .MuiTabs-indicator': {
       display: 'none',
     },
   },
   tab: {
     '&.MuiTab-root': {
+      padding: '0 18px',
       color: '#172B4D',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-      minHeight: '30px',
+      minHeight: '40px',
       textTransform: 'none',
-      fontSize: '14px',
+      fontSize: '16px',
       lineHeight: '20px',
       display: 'flex',
       boxShadow: 'none',
-      padding: '0px 8x',
+      margin: '0',
       justifyContent: 'flex-start',
-    },
-    '& .MuiTab-iconWrapper': {
-      marginRight: '10px',
     },
     '&.Mui-selected': {
       color: '#0767DB'
     }
   },
+  childrenWrapper: {
+    flex: '1',
+  }
 });
 
 export default useAbstractSidebarStyles;

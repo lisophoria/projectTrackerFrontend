@@ -7,13 +7,8 @@ const Sidebar: FC = () => {
       tabs={[
         {
           icon: (<AssignmentIcon />),
-          title: 'My issues',
+          title: 'My tasks',
           link: '/',
-        },
-        {
-          icon: (<AssignmentIcon />),
-          title: 'Categories',
-          link: '/2',
         },
       ]}
    />
