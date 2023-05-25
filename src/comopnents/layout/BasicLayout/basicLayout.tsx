@@ -1,7 +1,7 @@
 import {FC} from "react";
-import AbstractLayout from "../../abstract/abstractLayout";
+import AbstractLayout from "../../abstract/AbstractLayout";
 import {Box} from "@mui/material";
-import Sidebar from "../sidebar";
+import Sidebar from "../Sidebar";
 
 const BasicLayout: FC = () => {
   return (
