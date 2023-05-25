@@ -2,12 +2,14 @@ export enum ButtonTypes {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   ACCENT = 'accent',
+  TEXT = 'text',
 }
 
 export const MuiButtonVariantByButtonType = {
   [ButtonTypes.PRIMARY]: 'contained',
   [ButtonTypes.SECONDARY]: 'outlined',
   [ButtonTypes.ACCENT]: 'contained',
+  [ButtonTypes.TEXT]: 'text',
 }
 
 export const MuiButtonStyleByButtonType = {
@@ -37,4 +39,7 @@ export const MuiButtonStyleByButtonType = {
       backgroundColor: '#c6372d',
     },
   },
+  [ButtonTypes.TEXT]: {
+    color: '#172B4D',
+  }
 }

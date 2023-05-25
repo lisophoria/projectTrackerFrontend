@@ -9,7 +9,7 @@ import {
   MuiButtonVariantByButtonType
 } from './button.types';
 
-interface IButtonProps extends MuiButtonProps{
+export interface IButtonProps extends MuiButtonProps{
   styleType: ButtonTypes,
   onClick: () => void;
   icon?: JSX.Element,
