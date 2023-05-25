@@ -3,6 +3,7 @@ import {ICategory} from "../../../../store/model/category";
 import {Box, IconButton, SxProps, Typography} from "@mui/material"
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import useCategoriesStyles from "./categories.styles";
+import CategoryBlock from "../categoryBlock";
 
 interface ICategoriesProps {
   onAddCategoryClick: () => void;
@@ -35,9 +36,12 @@ const Categories: FC<ICategoriesProps> = (props) => {
       <Box className={classes.categoriesListWrapper}>
         {props.categories ? (
           props.categories.map((item) => (
-            <Typography fontSize={16}>
-              {item.categoryName}
-            </Typography>
+            <CategoryBlock
+              onClick={() => {/* TODO */}}
+              item={{
+                categoryName: item.categoryName
+              }}
+            />
           ))
         ) : (
           <Typography fontSize={16}>
