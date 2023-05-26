@@ -4,7 +4,7 @@ import useAbstractBlockWithButtonsStyles from "./AbstractBlockWithButtons.styles
 import {IButtonProps} from "../../ui/Button/button";
 import Button from "../../ui/Button";
 
-interface IAbstractBlockWithButtonsProps {
+export interface IAbstractBlockWithButtonsProps {
   width?: number;
   height?: number;
   heading?: string;
