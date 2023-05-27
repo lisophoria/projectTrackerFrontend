@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Box } from '@mui/material';
 import { ITask } from 'store/model/task';
-import TaskGroup from './components/TaskGroup/TaskGroup';
-import { isFarAway, isThisWeek, isToday } from '../../utils/datetime';
+import TaskGroup from './components/TaskGroup';
+import { isFarAway, isThisWeek, isToday } from 'utils/datetime';
 
 interface ITasksProps {
   tasks?: ITask[];

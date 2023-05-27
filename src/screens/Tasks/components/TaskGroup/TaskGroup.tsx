@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Box, Typography } from '@mui/material';
-import CollapsiblePanel from '../../../../comopnents/ui/CollapsibePanel';
-import { ITask } from '../../../../store/model/task';
-import TaskCard from '../TaskCard/TaskCard';
+import CollapsiblePanel from 'comopnents/ui/CollapsibePanel';
+import { ITask } from 'store/model/task';
+import TaskCard from 'screens/Tasks/components/TaskCard';
 
 interface ITaskGroupProps {
   name?: string;
