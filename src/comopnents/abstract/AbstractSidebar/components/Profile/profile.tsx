@@ -1,7 +1,9 @@
-import React, {FC} from "react";
-import {Avatar, Box, IconButton, SxProps, Typography} from "@mui/material";
-import useProfileStyles from "./profile.styles";
+import React, { FC } from 'react';
+import {
+  Avatar, Box, IconButton, SxProps, Typography, 
+} from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
+import useProfileStyles from './profile.styles';
 
 interface IProfileProps {
   name: string;
@@ -29,7 +31,9 @@ const Profile: FC<IProfileProps> = (props) => {
           <Typography
             fontSize={16}
             fontWeight={'bold'}
-          >{props.name}</Typography>
+          >
+            {props.name}
+          </Typography>
           <Typography
             fontSize={14}
             color={'#888888'}
@@ -43,7 +47,8 @@ const Profile: FC<IProfileProps> = (props) => {
         sx={{
           height: '40px',
           width: '40px',
-      }}>
+        }}
+      >
         <LogoutIcon />
       </IconButton>
     </Box>

@@ -1,8 +1,8 @@
-import {FC, PropsWithChildren} from "react";
-import {Box, Typography} from "@mui/material";
-import useAbstractBlockWithButtonsStyles from "./AbstractBlockWithButtons.styles";
-import {IButtonProps} from "../../ui/Button/button";
-import Button from "../../ui/Button";
+import { FC, PropsWithChildren } from 'react';
+import { Box, Typography } from '@mui/material';
+import Button from 'comopnents/ui/Button';
+import { IButtonProps } from 'comopnents/ui/Button/button';
+import useAbstractBlockWithButtonsStyles from './AbstractBlockWithButtons.styles';
 
 export interface IAbstractBlockWithButtonsProps {
   width?: number;

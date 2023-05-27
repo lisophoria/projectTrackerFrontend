@@ -1,13 +1,13 @@
-import {FC, PropsWithChildren} from "react";
+import { FC, PropsWithChildren } from 'react';
 import {
   Box,
   Tabs as MuiTabs,
   Tab as MuiTab,
-} from "@mui/material";
-import useAbstractSidebarStyles from "./abstractSidebar.styles";
-import {Link, useLocation} from "react-router-dom";
-import Profile from "./components/Profile";
-import {IUser} from "../../store/model/user";
+} from '@mui/material';
+import { Link, useLocation } from 'react-router-dom';
+import { IUser } from 'comopnents/store/model/user';
+import useAbstractSidebarStyles from './abstractSidebar.styles';
+import Profile from './components/Profile';
 
 interface ISidebarTab {
   icon?: JSX.Element;

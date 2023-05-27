@@ -1,7 +1,7 @@
-import {FC} from "react";
-import AbstractLayout from "../../abstract/AbstractLayout";
-import {Box} from "@mui/material";
-import Sidebar from "../Sidebar";
+import { FC } from 'react';
+import AbstractLayout from 'comopnents/abstract/AbstractLayout';
+import { Box } from '@mui/material';
+import Sidebar from 'comopnents/layout/Sidebar';
 
 const BasicLayout: FC = () => {
   return (
@@ -17,9 +17,9 @@ const BasicLayout: FC = () => {
         )}
         leftBlock={(
           <Sidebar
-            onLogoutClick={() => {/* TODO */}}
-            onAddCategoryClick={() => {/* TODO */}}
-            onCreateTaskClick={() => {/* TODO */}}
+            onLogoutClick={() => { /* TODO */ }}
+            onAddCategoryClick={() => { /* TODO */ }}
+            onCreateTaskClick={() => { /* TODO */ }}
           />
         )}
       >

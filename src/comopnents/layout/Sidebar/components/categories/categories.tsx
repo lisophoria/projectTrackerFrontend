@@ -1,9 +1,11 @@
-import {FC} from "react";
-import {ICategory} from "../../../../store/model/category";
-import {Box, IconButton, SxProps, Typography} from "@mui/material"
+import { FC } from 'react';
+import { ICategory } from 'comopnents/store/model/category';
+import {
+  Box, IconButton, SxProps, Typography, 
+} from '@mui/material';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
-import useCategoriesStyles from "./categories.styles";
-import CategoryBlock from "../categoryBlock";
+import CategoryBlock from 'comopnents/layout/Sidebar/components/categoryBlock';
+import useCategoriesStyles from './categories.styles';
 
 interface ICategoriesProps {
   onAddCategoryClick: () => void;
@@ -12,7 +14,7 @@ interface ICategoriesProps {
 }
 
 const Categories: FC<ICategoriesProps> = (props) => {
-  const { classes} = useCategoriesStyles();
+  const { classes } = useCategoriesStyles();
 
   return (
     <>
@@ -37,9 +39,9 @@ const Categories: FC<ICategoriesProps> = (props) => {
         {props.categories ? (
           props.categories.map((item) => (
             <CategoryBlock
-              onClick={() => {/* TODO */}}
+              onClick={() => { /* TODO */ }}
               item={{
-                categoryName: item.categoryName
+                categoryName: item.categoryName,
               }}
             />
           ))

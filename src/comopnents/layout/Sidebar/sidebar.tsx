@@ -1,11 +1,11 @@
-import {FC} from "react";
+import { FC } from 'react';
 import ModeStandbyIcon from '@mui/icons-material/ModeStandby';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import AbstractSidebar from "../../abstract/AbstractSidebar";
-import Categories from "./components/categories";
-import {Box} from "@mui/material";
-import Button from "../../ui/Button";
-import {ButtonTypes} from "../../ui/Button/button.types";
+import AbstractSidebar from 'comopnents/abstract/AbstractSidebar';
+import Categories from 'comopnents/layout/Sidebar/components/categories';
+import { Box } from '@mui/material';
+import Button from 'comopnents/ui/Button';
+import { ButtonTypes } from 'comopnents/ui/Button/button.types';
 
 interface ISidebarProps {
   onLogoutClick: () => void;
@@ -28,8 +28,8 @@ const Sidebar: FC<ISidebarProps> = (props) => {
         {
           icon: (<AccountCircleIcon />),
           title: 'Edit profile',
-          link: '/profile'
-        }
+          link: '/profile',
+        },
       ]}
     >
       <Box
@@ -38,7 +38,7 @@ const Sidebar: FC<ISidebarProps> = (props) => {
           flexDirection: 'column',
           height: '100%',
           boxSizing: 'border-box',
-          padding: '18px'
+          padding: '18px',
         }}
       >
         <Box

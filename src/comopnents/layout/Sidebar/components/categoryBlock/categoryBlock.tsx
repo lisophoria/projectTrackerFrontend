@@ -1,8 +1,8 @@
-import {FC} from "react";
-import {ICategory} from "../../../../store/model/category";
-import useCategoryBlockStyles from "./categoryBlock.styles";
-import Button from "../../../../ui/Button";
-import {ButtonTypes} from "../../../../ui/Button/button.types";
+import { FC } from 'react';
+import { ICategory } from 'comopnents/store/model/category';
+import Button from 'comopnents/ui/Button';
+import { ButtonTypes } from 'comopnents/ui/Button/button.types';
+import useCategoryBlockStyles from './categoryBlock.styles';
 
 interface ICategoryBlockProps {
   item: ICategory;
@@ -22,7 +22,7 @@ const CategoryBlock: FC<ICategoryBlockProps> = (props) => {
         justifyContent: 'start',
       }}
     />
-  )
-}
+  );
+};
 
 export default CategoryBlock;
