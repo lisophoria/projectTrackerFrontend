@@ -1,15 +1,15 @@
-import {FC} from 'react';
+import { FC } from 'react';
 import {
   Button as MuiButton,
-  ButtonProps as MuiButtonProps, SxProps
+  ButtonProps as MuiButtonProps, SxProps,
 } from '@mui/material';
 import {
   ButtonTypes,
   MuiButtonStyleByButtonType,
-  MuiButtonVariantByButtonType
-} from './button.types';
+  MuiButtonVariantByButtonType,
+} from './Button.types';
 
-export interface IButtonProps extends MuiButtonProps{
+export interface IButtonProps extends MuiButtonProps {
   styleType: ButtonTypes,
   onClick: () => void;
   icon?: JSX.Element,
@@ -24,7 +24,7 @@ const Button: FC<IButtonProps> = (props) => {
       type={props.type}
       startIcon={props.icon}
       variant={MuiButtonVariantByButtonType[props.styleType] as 'outlined' | 'contained'}
-      sx={{...MuiButtonStyleByButtonType[props.styleType], ...props.sx}}
+      sx={{ ...MuiButtonStyleByButtonType[props.styleType], ...props.sx }}
       disabled={props.disabled}
       onClick={props.onClick}
     >

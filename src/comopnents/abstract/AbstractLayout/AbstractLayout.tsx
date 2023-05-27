@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
 import { Box, SxProps } from '@mui/material';
-import useAbstractLayoutStyles from './abstractLayout.styles';
+import useAbstractLayoutStyles from './AbstractLayout.styles';
 
 interface IAbstractLayoutProps {
   leftBlock?: JSX.Element;

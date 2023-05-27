@@ -3,7 +3,7 @@ import AbstractSidebar from 'comopnents/abstract/AbstractSidebar';
 import Categories from 'comopnents/layout/Sidebar/components/categories';
 import { Box } from '@mui/material';
 import Button from 'comopnents/ui/Button';
-import { ButtonTypes } from 'comopnents/ui/Button/button.types';
+import { ButtonTypes } from 'comopnents/ui/Button/Button.types';
 import { ICategory } from 'comopnents/store/model/category';
 import { IUser } from 'comopnents/store/model/user';
 
@@ -41,6 +41,7 @@ const Sidebar: FC<ISidebarProps> = (props) => {
           <Box
             sx={{
               flex: '1',
+              overflow: 'auto',
             }}
           >
             {props.categories && (

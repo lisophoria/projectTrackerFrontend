@@ -1,3 +1,3 @@
-import CategoryBlock from './categoryBlock';
+import CategoryBlock from './CategoryBlock';
 
 export default CategoryBlock;

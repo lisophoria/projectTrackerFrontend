@@ -3,7 +3,7 @@ import {
   Avatar, Box, IconButton, SxProps, Typography, 
 } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
-import useProfileStyles from './profile.styles';
+import useProfileStyles from './Profile.styles';
 
 interface IProfileProps {
   name: string;

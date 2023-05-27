@@ -1,3 +1,3 @@
-import AbstractSidebar from './abstractSidebar';
+import AbstractSidebar from './AbstractSidebar';
 
 export default AbstractSidebar;

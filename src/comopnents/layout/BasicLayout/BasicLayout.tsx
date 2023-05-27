@@ -16,10 +16,11 @@ const BasicLayout: FC<PropsWithChildren<IBasicLayoutProps>> = (props) => {
       sx={{
         height: '100vh',
         width: '100vw',
-        backgroundColor: '#F4F5F7',
+        backgroundColor: '#f4f5f7',
       }}
     >
       <AbstractLayout
+        topRightBlock={<div>hahaha</div>}
         leftBlock={(
           <Sidebar
             onLogoutClick={() => { /* TODO */ }}
@@ -30,7 +31,14 @@ const BasicLayout: FC<PropsWithChildren<IBasicLayoutProps>> = (props) => {
           />
         )}
       >
-        <Box sx={{ height: '100%', padding: '18px' }}>
+        <Box
+          sx={{
+            height: '100%',
+            // padding: '18px',
+            // boxSizing: 'border-box',
+            overflow: 'hidden',
+          }}
+        >
           {props.children}
         </Box>
       </AbstractLayout>

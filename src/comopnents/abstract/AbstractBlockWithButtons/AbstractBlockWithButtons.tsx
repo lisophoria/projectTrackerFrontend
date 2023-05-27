@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from 'react';
 import { Box, Typography } from '@mui/material';
 import Button from 'comopnents/ui/Button';
-import { IButtonProps } from 'comopnents/ui/Button/button';
+import { IButtonProps } from 'comopnents/ui/Button/Button';
 import useAbstractBlockWithButtonsStyles from './AbstractBlockWithButtons.styles';
 
 export interface IAbstractBlockWithButtonsProps {

@@ -8,11 +8,13 @@ const useAbstractLayoutStyles = makeStyles()({
     width: '100%',
   },
   leftBlock: {
-    flex: '0 0 0',
+    flex: '0',
+    height: '100%',
   },
   verticalFlex: {
+    height: '100%',
     display: 'flex',
-    flex: '1 0 0',
+    flex: '1',
     flexDirection: 'column',
   },
   topRightBlock: {

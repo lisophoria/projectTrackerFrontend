@@ -16,6 +16,7 @@ const useAbstractSidebarStyles = makeStyles()({
   },
   childrenWrapper: {
     flex: '1',
+    overflow: 'overlay',
   },
 });
 

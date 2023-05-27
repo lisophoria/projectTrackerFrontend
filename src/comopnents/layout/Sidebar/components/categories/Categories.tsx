@@ -5,7 +5,7 @@ import {
 } from '@mui/material';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import CategoryBlock from 'comopnents/layout/Sidebar/components/categoryBlock';
-import useCategoriesStyles from './categories.styles';
+import useCategoriesStyles from './Categories.styles';
 
 interface ICategoriesProps {
   onAddCategoryClick: () => void;
