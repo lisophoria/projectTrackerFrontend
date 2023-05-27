@@ -7,7 +7,6 @@ const useAbstractSidebarStyles = makeStyles()({
     width: '300px',
     height: '100%',
     boxSizing: 'border-box',
-    backgroundColor: '#F4F5F7',
   },
   contentWrapper: {
     flex: '0',

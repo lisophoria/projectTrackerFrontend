@@ -4,11 +4,15 @@ import Categories from 'comopnents/layout/Sidebar/components/categories';
 import { Box } from '@mui/material';
 import Button from 'comopnents/ui/Button';
 import { ButtonTypes } from 'comopnents/ui/Button/button.types';
+import { ICategory } from 'comopnents/store/model/category';
+import { IUser } from 'comopnents/store/model/user';
 
 interface ISidebarProps {
   onLogoutClick: () => void;
   onAddCategoryClick: () => void;
   onCreateTaskClick: () => void;
+  categories?: ICategory[];
+  user: IUser;
 }
 
 const Sidebar: FC<ISidebarProps> = (props) => {
@@ -16,7 +20,7 @@ const Sidebar: FC<ISidebarProps> = (props) => {
     <AbstractSidebar
       // TODO 25.05.2023: Подставить значения из стора
       onLogoutClick={props.onLogoutClick}
-      user={{ username: 'Helluva Boss' }}
+      user={props.user}
     >
       <Box
         sx={{
@@ -39,20 +43,12 @@ const Sidebar: FC<ISidebarProps> = (props) => {
               flex: '1',
             }}
           >
-            <Categories
-              onAddCategoryClick={props.onAddCategoryClick}
-              categories={[
-                {
-                  categoryName: 'Personal',
-                },
-                {
-                  categoryName: 'Job',
-                },
-                {
-                  categoryName: 'Friends',
-                },
-              ]}
-            />
+            {props.categories && (
+              <Categories
+                onAddCategoryClick={props.onAddCategoryClick}
+                categories={props.categories}
+              />
+            )}
           </Box>
           <Box
             sx={{

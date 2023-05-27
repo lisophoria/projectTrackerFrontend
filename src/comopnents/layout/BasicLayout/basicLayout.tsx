@@ -1,29 +1,38 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import AbstractLayout from 'comopnents/abstract/AbstractLayout';
 import { Box } from '@mui/material';
 import Sidebar from 'comopnents/layout/Sidebar';
+import { ICategory } from 'comopnents/store/model/category';
+import { IUser } from 'comopnents/store/model/user';
 
-const BasicLayout: FC = () => {
+interface IBasicLayoutProps {
+  categories?: ICategory[];
+  user: IUser;
+}
+
+const BasicLayout: FC<PropsWithChildren<IBasicLayoutProps>> = (props) => {
   return (
     <Box
       sx={{
         height: '100vh',
         width: '100vw',
+        backgroundColor: '#F4F5F7',
       }}
     >
       <AbstractLayout
-        topRightBlock={(
-          <Box sx={{ backgroundColor: 'red' }}>header</Box>
-        )}
         leftBlock={(
           <Sidebar
             onLogoutClick={() => { /* TODO */ }}
             onAddCategoryClick={() => { /* TODO */ }}
             onCreateTaskClick={() => { /* TODO */ }}
+            categories={props.categories}
+            user={props.user}
           />
         )}
       >
-        <Box sx={{ backgroundColor: 'pink', height: '100%' }}>content</Box>
+        <Box sx={{ height: '100%', padding: '18px' }}>
+          {props.children}
+        </Box>
       </AbstractLayout>
     </Box>
   );
