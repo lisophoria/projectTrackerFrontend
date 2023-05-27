@@ -20,7 +20,6 @@ const BasicLayout: FC<PropsWithChildren<IBasicLayoutProps>> = (props) => {
       }}
     >
       <AbstractLayout
-        topRightBlock={<div>hahaha</div>}
         leftBlock={(
           <Sidebar
             onLogoutClick={() => { /* TODO */ }}
@@ -34,8 +33,8 @@ const BasicLayout: FC<PropsWithChildren<IBasicLayoutProps>> = (props) => {
         <Box
           sx={{
             height: '100%',
-            // padding: '18px',
-            // boxSizing: 'border-box',
+            padding: '18px',
+            boxSizing: 'border-box',
             overflow: 'hidden',
           }}
         >

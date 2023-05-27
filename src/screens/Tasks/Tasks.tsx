@@ -7,8 +7,8 @@ const Tasks: FC = () => {
     <Box
       sx={{
         height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
+        // display: 'flex',
+        // flexDirection: 'column',
         overflow: 'auto',
       }}
     >

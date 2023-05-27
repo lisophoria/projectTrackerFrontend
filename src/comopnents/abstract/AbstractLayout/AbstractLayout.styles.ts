@@ -22,6 +22,7 @@ const useAbstractLayoutStyles = makeStyles()({
   },
   bottomRightBlock: {
     flex: '1',
+    overflow: 'auto',
   },
 });
 
