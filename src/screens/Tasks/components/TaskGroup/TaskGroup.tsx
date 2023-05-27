@@ -7,6 +7,7 @@ import TaskCard from 'screens/Tasks/components/TaskCard';
 interface ITaskGroupProps {
   name?: string;
   noTasksString?: string;
+  onChange: (value: ITask) => void;
   tasks?: ITask[];
 }
 
@@ -20,7 +21,7 @@ const TaskGroup: FC<ITaskGroupProps> = (props) => {
           {props.tasks.map((item) => (
             <TaskCard
               task={item}
-              onChange={(value) => console.log(value)}
+              onChange={props.onChange}
             />
           ))}
         </Box>

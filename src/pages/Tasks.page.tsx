@@ -42,7 +42,10 @@ const TasksPage = () => {
   ];
   
   return (
-    <Tasks tasks={tasks} />
+    <Tasks
+      tasks={tasks}
+      onChange={() => { /* TODO */ }}
+    />
   );
 };
 
