@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ICategory } from 'comopnents/store/model/category';
+import { ICategory } from 'store/model/category';
 import Button from 'comopnents/ui/Button';
 import { ButtonTypes } from 'comopnents/ui/Button/Button.types';
 

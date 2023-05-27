@@ -2,8 +2,8 @@ import { FC, PropsWithChildren } from 'react';
 import AbstractLayout from 'comopnents/abstract/AbstractLayout';
 import { Box } from '@mui/material';
 import Sidebar from 'comopnents/layout/Sidebar';
-import { ICategory } from 'comopnents/store/model/category';
-import { IUser } from 'comopnents/store/model/user';
+import { ICategory } from 'store/model/category';
+import { IUser } from 'store/model/user';
 
 interface IBasicLayoutProps {
   categories?: ICategory[];

@@ -3,8 +3,8 @@ import {
   ChangeEvent, FC, useState,
 } from 'react';
 import useTaskCardStyles from './TaskCard.styles';
-import { ITask } from '../../../../comopnents/store/model/task';
-import { setField } from '../../../../comopnents/utils/setField';
+import { ITask } from '../../../../store/model/task';
+import { setField } from '../../../../utils/setField';
 import Panel from '../../../../comopnents/ui/Panel';
 
 interface ITaskCardProps {

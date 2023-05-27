@@ -4,8 +4,8 @@ import Categories from 'comopnents/layout/Sidebar/components/categories';
 import { Box } from '@mui/material';
 import Button from 'comopnents/ui/Button';
 import { ButtonTypes } from 'comopnents/ui/Button/Button.types';
-import { ICategory } from 'comopnents/store/model/category';
-import { IUser } from 'comopnents/store/model/user';
+import { ICategory } from 'store/model/category';
+import { IUser } from 'store/model/user';
 
 interface ISidebarProps {
   onLogoutClick: () => void;

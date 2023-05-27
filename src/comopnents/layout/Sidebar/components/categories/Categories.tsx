@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ICategory } from 'comopnents/store/model/category';
+import { ICategory } from 'store/model/category';
 import {
   Box, IconButton, SxProps, Typography, 
 } from '@mui/material';
