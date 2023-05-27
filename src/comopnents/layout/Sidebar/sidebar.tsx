@@ -1,6 +1,4 @@
 import { FC } from 'react';
-import ModeStandbyIcon from '@mui/icons-material/ModeStandby';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AbstractSidebar from 'comopnents/abstract/AbstractSidebar';
 import Categories from 'comopnents/layout/Sidebar/components/categories';
 import { Box } from '@mui/material';
@@ -19,18 +17,6 @@ const Sidebar: FC<ISidebarProps> = (props) => {
       // TODO 25.05.2023: Подставить значения из стора
       onLogoutClick={props.onLogoutClick}
       user={{ username: 'Helluva Boss' }}
-      tabs={[
-        {
-          icon: (<ModeStandbyIcon />),
-          title: 'My day',
-          link: '/',
-        },
-        {
-          icon: (<AccountCircleIcon />),
-          title: 'Edit profile',
-          link: '/profile',
-        },
-      ]}
     >
       <Box
         sx={{

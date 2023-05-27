@@ -1,4 +1,4 @@
-import {makeStyles} from "tss-react/mui";
+import { makeStyles } from 'tss-react/mui';
 
 const useAbstractBlockWithButtonsStyles = makeStyles()({
   blockWrapper: {
@@ -14,7 +14,7 @@ const useAbstractBlockWithButtonsStyles = makeStyles()({
     display: 'flex',
     flexDirection: 'row',
     gap: '20px',
-  }
+  },
 });
 
 export default useAbstractBlockWithButtonsStyles;

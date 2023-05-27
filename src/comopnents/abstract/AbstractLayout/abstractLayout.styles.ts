@@ -1,4 +1,4 @@
-import {makeStyles} from "tss-react/mui";
+import { makeStyles } from 'tss-react/mui';
 
 const useAbstractLayoutStyles = makeStyles()({
   horizontalFlex: {
@@ -20,7 +20,7 @@ const useAbstractLayoutStyles = makeStyles()({
   },
   bottomRightBlock: {
     flex: '1',
-  }
+  },
 });
 
 export default useAbstractLayoutStyles;
