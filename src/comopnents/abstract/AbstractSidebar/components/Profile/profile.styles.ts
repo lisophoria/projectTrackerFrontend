@@ -1,4 +1,4 @@
-import {makeStyles} from "tss-react/mui";
+import { makeStyles } from 'tss-react/mui';
 
 const useProfileStyles = makeStyles()({
   profileWrapper: {
@@ -15,7 +15,7 @@ const useProfileStyles = makeStyles()({
     display: 'flex',
     flexDirection: 'column',
     gap: '-5px',
-  }
+  },
 });
 
 export default useProfileStyles;

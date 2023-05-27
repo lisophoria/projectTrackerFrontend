@@ -2,16 +2,14 @@ import { FC } from 'react';
 import { ICategory } from 'comopnents/store/model/category';
 import Button from 'comopnents/ui/Button';
 import { ButtonTypes } from 'comopnents/ui/Button/button.types';
-import useCategoryBlockStyles from './categoryBlock.styles';
 
 interface ICategoryBlockProps {
   item: ICategory;
   onClick: () => void;
 }
 
+// TODO 27.05.2023: Переделать как чекбокс
 const CategoryBlock: FC<ICategoryBlockProps> = (props) => {
-  const { classes } = useCategoryBlockStyles();
-
   return (
     <Button
       styleType={ButtonTypes.TEXT}

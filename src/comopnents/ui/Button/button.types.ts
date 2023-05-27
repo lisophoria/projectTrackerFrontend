@@ -10,7 +10,7 @@ export const MuiButtonVariantByButtonType = {
   [ButtonTypes.SECONDARY]: 'outlined',
   [ButtonTypes.ACCENT]: 'contained',
   [ButtonTypes.TEXT]: 'text',
-}
+};
 
 export const MuiButtonStyleByButtonType = {
   [ButtonTypes.PRIMARY]: {
@@ -41,5 +41,5 @@ export const MuiButtonStyleByButtonType = {
   },
   [ButtonTypes.TEXT]: {
     color: '#172B4D',
-  }
-}
+  },
+};
