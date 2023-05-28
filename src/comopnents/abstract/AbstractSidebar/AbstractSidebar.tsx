@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from 'react';
 import { Box } from '@mui/material';
-import { IUser } from 'comopnents/store/model/user';
-import useAbstractSidebarStyles from './abstractSidebar.styles';
+import { IUser } from 'store/model/user';
+import useAbstractSidebarStyles from './AbstractSidebar.styles';
 import Profile from './components/Profile';
 
 interface IAbstractSidebarProps {

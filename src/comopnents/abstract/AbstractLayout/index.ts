@@ -1,3 +1,3 @@
-import AbstractLayout from './abstractLayout';
+import AbstractLayout from './AbstractLayout';
 
 export default AbstractLayout;
