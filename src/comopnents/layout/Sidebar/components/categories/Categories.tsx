@@ -41,7 +41,6 @@ const Categories: FC<ICategoriesProps> = (props) => {
             <CategoryBlock
               onSelectChange={() => { /* TODO */ }}
               onEditClick={() => { /* TODO */ }}
-              onDeleteClick={() => { /* TODO */ }}
               item={{
                 categoryName: item.categoryName,
               }}

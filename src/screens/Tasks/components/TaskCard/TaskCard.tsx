@@ -11,6 +11,7 @@ import { setField } from 'utils/setField';
 import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
 import AbstractPanelWithActions from 'comopnents/abstract/AbstractPanelWithActions';
+import ConfirmDeleteModal from 'comopnents/modal/ConfirmDeleteModal';
 
 interface ITaskCardProps {
   task: ITask;
@@ -19,6 +20,7 @@ interface ITaskCardProps {
 
 const TaskCard: FC<ITaskCardProps> = (props) => {
   const [task, setTask] = useState<ITask>(props.task);
+  const [isConfirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState<boolean>(false);
 
   const handleChange = (field: string, value: any) => {
     setField(task, field, value, setTask);
@@ -30,35 +32,43 @@ const TaskCard: FC<ITaskCardProps> = (props) => {
   };
 
   return (
-    <AbstractPanelWithActions
-      bordered
-      leftAction={(
-        <Checkbox
-          checked={task.status}
-          onChange={handleCheckEvent}
-        />
-      )}
-      actions={[
-        {
-          icon: <EditIcon />,
-          onClick: () => { /* TODO */ },
-        },
-        {
-          icon: <CloseIcon />,
-          onClick: () => { /* TODO */ },
-        },
-      ]}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          gap: '10px',
-        }}
+    <>
+      <AbstractPanelWithActions
+        bordered
+        leftAction={(
+          <Checkbox
+            checked={task.status}
+            onChange={handleCheckEvent}
+          />
+        )}
+        actions={[
+          {
+            icon: <EditIcon />,
+            onClick: () => { /* TODO */ },
+          },
+          {
+            icon: <CloseIcon />,
+            onClick: () => setConfirmDeleteModalOpen(true),
+          },
+        ]}
       >
-        <Typography>{task.taskName}</Typography>
-        <Typography color={'#888888'}>{task.categoryName}</Typography>
-      </Box>
-    </AbstractPanelWithActions>
+        <Box
+          sx={{
+            display: 'flex',
+            gap: '10px',
+          }}
+        >
+          <Typography>{task.taskName}</Typography>
+          <Typography color={'#888888'}>{task.categoryName}</Typography>
+        </Box>
+      </AbstractPanelWithActions>
+      <ConfirmDeleteModal
+        open={isConfirmDeleteModalOpen}
+        onClose={() => setConfirmDeleteModalOpen(false)}
+        onDeleteClick={() => { /* TODO */ }}
+        nameOfDeletingObject={task.taskName ?? 'task'}
+      />
+    </>
   );
 };
 

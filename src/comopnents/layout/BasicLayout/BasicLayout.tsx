@@ -12,36 +12,38 @@ interface IBasicLayoutProps {
 
 const BasicLayout: FC<PropsWithChildren<IBasicLayoutProps>> = (props) => {
   return (
-    <Box
-      sx={{
-        height: '100vh',
-        width: '100vw',
-        backgroundColor: '#f4f5f7',
-      }}
-    >
-      <AbstractLayout
-        leftBlock={(
-          <Sidebar
-            onLogoutClick={() => { /* TODO */ }}
-            onAddCategoryClick={() => { /* TODO */ }}
-            onCreateTaskClick={() => { /* TODO */ }}
-            categories={props.categories}
-            user={props.user}
-          />
-        )}
+    <>
+      <Box
+        sx={{
+          height: '100vh',
+          width: '100vw',
+          backgroundColor: '#f4f5f7',
+        }}
       >
-        <Box
-          sx={{
-            height: '100%',
-            padding: '18px',
-            boxSizing: 'border-box',
-            overflow: 'hidden',
-          }}
+        <AbstractLayout
+          leftBlock={(
+            <Sidebar
+              onLogoutClick={() => { /* TODO */ }}
+              onAddCategoryClick={() => { /* TODO */ }}
+              onCreateTaskClick={() => { /* TODO */ }}
+              categories={props.categories}
+              user={props.user}
+            />
+          )}
         >
-          {props.children}
-        </Box>
-      </AbstractLayout>
-    </Box>
+          <Box
+            sx={{
+              height: '100%',
+              padding: '18px',
+              boxSizing: 'border-box',
+              overflow: 'hidden',
+            }}
+          >
+            {props.children}
+          </Box>
+        </AbstractLayout>
+      </Box>
+    </>
   );
 };
 
