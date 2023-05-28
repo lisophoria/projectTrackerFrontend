@@ -46,7 +46,6 @@ const Sidebar: FC<ISidebarProps> = (props) => {
           >
             {props.categories && (
               <Categories
-                onAddCategoryClick={props.onAddCategoryClick}
                 categories={props.categories}
               />
             )}
