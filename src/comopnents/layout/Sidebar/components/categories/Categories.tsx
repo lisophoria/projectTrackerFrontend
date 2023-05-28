@@ -40,7 +40,6 @@ const Categories: FC<ICategoriesProps> = (props) => {
           props.categories.map((item) => (
             <CategoryBlock
               onSelectChange={() => { /* TODO */ }}
-              onEditClick={() => { /* TODO */ }}
               item={{
                 categoryName: item.categoryName,
               }}

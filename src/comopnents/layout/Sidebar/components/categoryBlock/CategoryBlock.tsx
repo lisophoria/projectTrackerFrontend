@@ -5,15 +5,16 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Checkbox, FormControlLabel } from '@mui/material';
 import AbstractPanelWithActions from 'comopnents/abstract/AbstractPanelWithActions';
 import ConfirmDeleteModal from 'comopnents/modal/ConfirmDeleteModal';
+import EditCategoryModal from 'comopnents/modal/EditCategoryModal';
 
 interface ICategoryBlockProps {
   item: ICategory;
   onSelectChange: (value: boolean) => void;
-  onEditClick: () => void;
 }
 
 const CategoryBlock: FC<ICategoryBlockProps> = (props) => {
   const [isConfirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState<boolean>(false);
+  const [isEditCategoryModalOpen, setEditCategoryModalOpen] = useState<boolean>(false);
 
   const onSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
     props.onSelectChange(e.target.checked);
@@ -25,7 +26,7 @@ const CategoryBlock: FC<ICategoryBlockProps> = (props) => {
         actions={[
           {
             icon: <EditIcon />,
-            onClick: props.onEditClick,
+            onClick: () => setEditCategoryModalOpen(true),
           },
           {
             icon: <CloseIcon />,
@@ -46,8 +47,14 @@ const CategoryBlock: FC<ICategoryBlockProps> = (props) => {
       <ConfirmDeleteModal
         open={isConfirmDeleteModalOpen}
         onClose={() => setConfirmDeleteModalOpen(false)}
-        onDeleteClick={() => setConfirmDeleteModalOpen(false)}
+        onDeleteClick={() => { /* TODO */ }}
         nameOfDeletingObject={props.item.categoryName ?? 'category'}
+      />
+      <EditCategoryModal
+        category={props.item}
+        open={isEditCategoryModalOpen}
+        onClose={() => setEditCategoryModalOpen(false)}
+        onConfirmClick={() => { /* TODO */ }}
       />
     </>
   );
