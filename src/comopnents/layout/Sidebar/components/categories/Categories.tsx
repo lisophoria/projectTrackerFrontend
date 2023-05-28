@@ -39,7 +39,9 @@ const Categories: FC<ICategoriesProps> = (props) => {
         {props.categories ? (
           props.categories.map((item) => (
             <CategoryBlock
-              onClick={() => { /* TODO */ }}
+              onSelectChange={() => { /* TODO */ }}
+              onEditClick={() => { /* TODO */ }}
+              onDeleteClick={() => { /* TODO */ }}
               item={{
                 categoryName: item.categoryName,
               }}

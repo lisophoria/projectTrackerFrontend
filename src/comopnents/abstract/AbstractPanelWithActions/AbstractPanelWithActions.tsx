@@ -9,6 +9,7 @@ interface IAbstractPanelWithActionsProps {
     icon: JSX.Element;
     onClick: () => void;
   }[];
+  bordered?: boolean;
 }
 
 const AbstractPanelWithActions: FC<PropsWithChildren<IAbstractPanelWithActionsProps>> = (props) => {
@@ -20,10 +21,16 @@ const AbstractPanelWithActions: FC<PropsWithChildren<IAbstractPanelWithActionsPr
       if (isHover) return classes.actionsVisible;
       return classes.actionsHidden;
     },
+    panelSxProps: () => {
+      if (props.bordered) return undefined;
+      return {
+        boxShadow: 'none !important',
+      };
+    },
   };
   
   return (
-    <Panel>
+    <Panel sx={conditionalValues.panelSxProps()}>
       <Box
         className={classes.wrapper}
         onMouseEnter={() => setHover(true)}

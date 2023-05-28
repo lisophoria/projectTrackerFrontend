@@ -1,25 +1,45 @@
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 import { ICategory } from 'store/model/category';
-import Button from 'comopnents/ui/Button';
-import { ButtonTypes } from 'comopnents/ui/Button/Button.types';
+import EditIcon from '@mui/icons-material/Edit';
+import CloseIcon from '@mui/icons-material/Close';
+import { Checkbox, FormControlLabel } from '@mui/material';
+import AbstractPanelWithActions from 'comopnents/abstract/AbstractPanelWithActions';
 
 interface ICategoryBlockProps {
   item: ICategory;
-  onClick: () => void;
+  onSelectChange: (value: boolean) => void;
+  onEditClick: () => void;
+  onDeleteClick: () => void;
 }
 
-// TODO 27.05.2023: Переделать как чекбокс
 const CategoryBlock: FC<ICategoryBlockProps> = (props) => {
+  const onSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
+    props.onSelectChange(e.target.checked);
+  };
+  
   return (
-    <Button
-      styleType={ButtonTypes.TEXT}
-      title={props.item.categoryName}
-      onClick={props.onClick}
-      sx={{
-        fontSize: '16px',
-        justifyContent: 'start',
-      }}
-    />
+    <AbstractPanelWithActions
+      actions={[
+        {
+          icon: <EditIcon />,
+          onClick: props.onEditClick,
+        },
+        {
+          icon: <CloseIcon />,
+          onClick: props.onDeleteClick,
+        },
+      ]}
+    >
+      <FormControlLabel
+        control={(
+          <Checkbox
+            checked
+            onChange={onSelectChange}
+          />
+        )}
+        label={props.item.categoryName}
+      />
+    </AbstractPanelWithActions>
   );
 };
 

@@ -31,6 +31,7 @@ const TaskCard: FC<ITaskCardProps> = (props) => {
 
   return (
     <AbstractPanelWithActions
+      bordered
       leftAction={(
         <Checkbox
           checked={task.status}
