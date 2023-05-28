@@ -1,5 +1,6 @@
 import {
-  Box, Checkbox, IconButton, Typography, 
+  Box,
+  Checkbox, Typography,
 } from '@mui/material';
 import {
   ChangeEvent,
@@ -7,10 +8,9 @@ import {
 } from 'react';
 import { ITask } from 'store/model/task';
 import { setField } from 'utils/setField';
-import Panel from 'comopnents/ui/Panel';
-import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
-import useTaskCardStyles from './TaskCard.styles';
+import CloseIcon from '@mui/icons-material/Close';
+import AbstractPanelWithActions from 'comopnents/abstract/AbstractPanelWithActions';
 
 interface ITaskCardProps {
   task: ITask;
@@ -18,10 +18,7 @@ interface ITaskCardProps {
 }
 
 const TaskCard: FC<ITaskCardProps> = (props) => {
-  const { classes } = useTaskCardStyles();
-
   const [task, setTask] = useState<ITask>(props.task);
-  const [isHover, setHover] = useState<boolean>(false);
 
   const handleChange = (field: string, value: any) => {
     setField(task, field, value, setTask);
@@ -32,41 +29,35 @@ const TaskCard: FC<ITaskCardProps> = (props) => {
     props.onChange(task);
   };
 
-  const conditionalValues = {
-    actionsClassName: () => {
-      if (isHover) return classes.actionsVisible;
-      return classes.actionsHidden;
-    },
-  };
-
   return (
-    <Panel sx={{ borderRadius: '8px' }}>
-      <Box
-        className={classes.taskWrapper}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
+    <AbstractPanelWithActions
+      leftAction={(
         <Checkbox
           checked={task.status}
           onChange={handleCheckEvent}
-          className={classes.checkboxFlex}
         />
-        <Box className={classes.insideFlex}>
-          <Box className={classes.infoFlex}>
-            <Typography>{task.taskName}</Typography>
-            <Typography className={classes.categoryName}>{task.categoryName}</Typography>
-          </Box>
-          <Box className={conditionalValues.actionsClassName()}>
-            <IconButton onClick={() => { /* TODO */ }}>
-              <EditIcon />
-            </IconButton>
-            <IconButton onClick={() => { /* TODO */ }}>
-              <CloseIcon />
-            </IconButton>
-          </Box>
-        </Box>
+      )}
+      actions={[
+        {
+          icon: <EditIcon />,
+          onClick: () => { /* TODO */ },
+        },
+        {
+          icon: <CloseIcon />,
+          onClick: () => { /* TODO */ },
+        },
+      ]}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          gap: '10px',
+        }}
+      >
+        <Typography>{task.taskName}</Typography>
+        <Typography color={'#888888'}>{task.categoryName}</Typography>
       </Box>
-    </Panel>
+    </AbstractPanelWithActions>
   );
 };
 
