@@ -18,7 +18,7 @@ const Tasks: FC<ITasksProps> = (props) => {
     <Box
       sx={{
         height: '100%',
-        overflow: 'auto',
+        overflow: 'overlay',
       }}
     >
       <TaskGroup

@@ -34,7 +34,7 @@ const BasicLayout: FC<PropsWithChildren<IBasicLayoutProps>> = (props) => {
           <Box
             sx={{
               height: '100%',
-              padding: '18px',
+              padding: '18px 0 0 18px',
               boxSizing: 'border-box',
               overflow: 'hidden',
             }}
