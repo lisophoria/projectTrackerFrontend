@@ -12,6 +12,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
 import AbstractPanelWithActions from 'comopnents/abstract/AbstractPanelWithActions';
 import ConfirmDeleteModal from 'comopnents/modal/ConfirmDeleteModal';
+import EditTaskModal from 'comopnents/modal/EditTaskModal';
 
 interface ITaskCardProps {
   task: ITask;
@@ -21,6 +22,7 @@ interface ITaskCardProps {
 const TaskCard: FC<ITaskCardProps> = (props) => {
   const [task, setTask] = useState<ITask>(props.task);
   const [isConfirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState<boolean>(false);
+  const [isEditTaskModalOpen, setEditTaskModalOpen] = useState<boolean>(false);
 
   const handleChange = (field: string, value: any) => {
     setField(task, field, value, setTask);
@@ -29,6 +31,11 @@ const TaskCard: FC<ITaskCardProps> = (props) => {
   const handleCheckEvent = (e: ChangeEvent<HTMLInputElement>) => {
     handleChange('status', e.target.checked);
     props.onChange(task);
+  };
+
+  const handleSaveClick = (value: ITask) => {
+    setTask(((prevState) => ({ ...value, status: prevState.status })));
+    setEditTaskModalOpen(false);
   };
 
   return (
@@ -44,7 +51,7 @@ const TaskCard: FC<ITaskCardProps> = (props) => {
         actions={[
           {
             icon: <EditIcon />,
-            onClick: () => { /* TODO */ },
+            onClick: () => setEditTaskModalOpen(true),
           },
           {
             icon: <CloseIcon />,
@@ -67,6 +74,12 @@ const TaskCard: FC<ITaskCardProps> = (props) => {
         onClose={() => setConfirmDeleteModalOpen(false)}
         onDeleteClick={() => { /* TODO */ }}
         nameOfDeletingObject={task.taskName ?? 'task'}
+      />
+      <EditTaskModal
+        open={isEditTaskModalOpen}
+        onClose={() => setEditTaskModalOpen(false)}
+        onSaveClick={handleSaveClick}
+        task={task}
       />
     </>
   );
