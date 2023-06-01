@@ -1,25 +1,62 @@
-import { FC } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 import { ICategory } from 'store/model/category';
-import Button from 'comopnents/ui/Button';
-import { ButtonTypes } from 'comopnents/ui/Button/Button.types';
+import EditIcon from '@mui/icons-material/Edit';
+import CloseIcon from '@mui/icons-material/Close';
+import { Checkbox, FormControlLabel } from '@mui/material';
+import AbstractPanelWithActions from 'comopnents/abstract/AbstractPanelWithActions';
+import ConfirmDeleteModal from 'comopnents/modal/ConfirmDeleteModal';
+import EditCategoryModal from 'comopnents/modal/EditCategoryModal';
 
 interface ICategoryBlockProps {
   item: ICategory;
-  onClick: () => void;
+  onSelectChange: (value: boolean) => void;
 }
 
-// TODO 27.05.2023: Переделать как чекбокс
 const CategoryBlock: FC<ICategoryBlockProps> = (props) => {
+  const [isConfirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState<boolean>(false);
+  const [isEditCategoryModalOpen, setEditCategoryModalOpen] = useState<boolean>(false);
+
+  const onSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
+    props.onSelectChange(e.target.checked);
+  };
+  
   return (
-    <Button
-      styleType={ButtonTypes.TEXT}
-      title={props.item.categoryName}
-      onClick={props.onClick}
-      sx={{
-        fontSize: '16px',
-        justifyContent: 'start',
-      }}
-    />
+    <>
+      <AbstractPanelWithActions
+        actions={[
+          {
+            icon: <EditIcon />,
+            onClick: () => setEditCategoryModalOpen(true),
+          },
+          {
+            icon: <CloseIcon />,
+            onClick: () => setConfirmDeleteModalOpen(true),
+          },
+        ]}
+      >
+        <FormControlLabel
+          control={(
+            <Checkbox
+              checked
+              onChange={onSelectChange}
+            />
+          )}
+          label={props.item.categoryName}
+        />
+      </AbstractPanelWithActions>
+      <ConfirmDeleteModal
+        open={isConfirmDeleteModalOpen}
+        onClose={() => setConfirmDeleteModalOpen(false)}
+        onDeleteClick={() => { /* TODO */ }}
+        nameOfDeletingObject={props.item.categoryName ?? 'category'}
+      />
+      <EditCategoryModal
+        category={props.item}
+        open={isEditCategoryModalOpen}
+        onClose={() => setEditCategoryModalOpen(false)}
+        onConfirmClick={() => { /* TODO */ }}
+      />
+    </>
   );
 };
 

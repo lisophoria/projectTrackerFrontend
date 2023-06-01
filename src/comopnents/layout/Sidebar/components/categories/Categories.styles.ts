@@ -10,6 +10,8 @@ const useCategoriesStyles = makeStyles()({
   categoriesListWrapper: {
     flex: '1',
     display: 'flex',
+    paddingLeft: '8px',
+    boxSizing: 'border-box',
     flexDirection: 'column',
   },
 });

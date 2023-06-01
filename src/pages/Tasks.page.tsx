@@ -39,6 +39,42 @@ const TasksPage = () => {
       status: false,
       date: new Date('2023-06-25'),
     },
+    {
+      taskId: 5,
+      categoryId: 1,
+      categoryName: 'personal',
+      taskName: 'Create first task',
+      description: 'test description',
+      status: true,
+      date: new Date('2023-06-25'),
+    },
+    {
+      taskId: 6,
+      categoryId: 1,
+      categoryName: 'personal',
+      taskName: 'Second task',
+      description: 'description for second task',
+      status: false,
+      date: new Date('2023-06-25'),
+    },
+    {
+      taskId: 7,
+      categoryId: 2,
+      categoryName: 'good',
+      taskName: 'Good 1',
+      description: 'test description',
+      status: true,
+      date: new Date('2023-06-25'),
+    },
+    {
+      taskId: 8,
+      categoryId: 2,
+      categoryName: 'good',
+      taskName: 'Good 2',
+      description: 'description for second task',
+      status: false,
+      date: new Date('2023-06-25'),
+    },
   ];
   
   return (
