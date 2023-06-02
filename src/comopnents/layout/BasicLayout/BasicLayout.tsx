@@ -3,11 +3,9 @@ import AbstractLayout from 'comopnents/abstract/AbstractLayout';
 import { Box } from '@mui/material';
 import Sidebar from 'comopnents/layout/Sidebar';
 import { ICategory } from 'store/model/category';
-import { IUser } from 'store/model/user';
 
 interface IBasicLayoutProps {
   categories?: ICategory[];
-  user: IUser;
 }
 
 const BasicLayout: FC<PropsWithChildren<IBasicLayoutProps>> = (props) => {
@@ -27,7 +25,6 @@ const BasicLayout: FC<PropsWithChildren<IBasicLayoutProps>> = (props) => {
               onAddCategoryClick={() => { /* TODO */ }}
               onCreateTaskClick={() => { /* TODO */ }}
               categories={props.categories}
-              user={props.user}
             />
           )}
         >

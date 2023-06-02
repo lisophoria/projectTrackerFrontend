@@ -3,10 +3,10 @@ import {
   Avatar, Box, IconButton, SxProps, Typography, 
 } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useAppSelector } from 'store/hooks';
 import useProfileStyles from './Profile.styles';
 
 interface IProfileProps {
-  name: string;
   onLogoutClick: () => void;
   sx?: SxProps;
 }
@@ -14,25 +14,34 @@ interface IProfileProps {
 const Profile: FC<IProfileProps> = (props) => {
   const { classes } = useProfileStyles();
 
+  const { user } = useAppSelector((state) => state.user);
+
+  if (!user) {
+    return (
+      <Typography
+        fontSize={16}
+        fontWeight={'bold'}
+      >
+        {'User not defined'}
+      </Typography>
+    );
+  }
+  
   return (
     <Box
       className={classes.profileWrapper}
       sx={props.sx}
     >
       <Box className={classes.infoWrapper}>
-        <Avatar
-          sx={{
-            backgroundColor: '#0767DB',
-          }}
-        >
-          {props.name[0]}
+        <Avatar sx={{ backgroundColor: '#0767DB' }}>
+          {user.username ? user.username[0] : 'U'}
         </Avatar>
         <Box>
           <Typography
             fontSize={16}
             fontWeight={'bold'}
           >
-            {props.name}
+            {user.username ?? 'User Name'}
           </Typography>
           <Typography
             fontSize={14}

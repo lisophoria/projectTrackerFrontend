@@ -3,10 +3,6 @@ import BasicLayout from 'comopnents/layout/BasicLayout';
 
 const BasicLayoutPage = () => {
   const mock = {
-    user: {
-      userId: 1,
-      username: 'Helluva Boss',
-    },
     categories: [
       {
         categoryId: 1,
@@ -24,10 +20,7 @@ const BasicLayoutPage = () => {
   };
 
   return (
-    <BasicLayout
-      user={mock.user}
-      categories={mock.categories}
-    >
+    <BasicLayout categories={mock.categories}>
       <Outlet />
     </BasicLayout>
   );

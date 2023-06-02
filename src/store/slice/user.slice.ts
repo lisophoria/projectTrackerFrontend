@@ -1,12 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUser } from 'store/model/user';
 
-export interface IUserState {
+interface IUserState {
   user: IUser | null;
 }
 
 const initialState: IUserState = {
-  user: null,
+  user: {
+    userId: 1,
+    username: 'Victor Astakhov',
+  },
 };
 
 const userSlice = createSlice({
