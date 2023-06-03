@@ -1,7 +1,9 @@
 import { FC } from 'react';
 import { Box } from '@mui/material';
 import { ITask } from 'store/model/task';
-import { isFarAway, isThisWeek, isToday } from 'utils/datetime';
+import {
+  isFarAway, isPassed, isThisWeek, isToday, 
+} from 'utils/datetime';
 import TaskGroup from './components/TaskGroup';
 
 interface ITasksProps {
@@ -13,6 +15,7 @@ const Tasks: FC<ITasksProps> = (props) => {
   const todayTasks = (props.tasks ?? []).filter((item) => isToday(item.date!));
   const weekTasks = (props.tasks ?? []).filter((item) => isThisWeek(item.date!));
   const farAwayTasks = (props.tasks ?? []).filter((item) => isFarAway(item.date!));
+  const recentTasks = (props.tasks ?? []).filter((item) => isPassed(item.date!));
 
   return (
     <Box
@@ -21,6 +24,13 @@ const Tasks: FC<ITasksProps> = (props) => {
         overflow: 'overlay',
       }}
     >
+      <TaskGroup
+        name={'Recent'}
+        noTasksString={'recently'}
+        onChange={props.onChange}
+        tasks={recentTasks}
+        defaultClosed
+      />
       <TaskGroup
         name={'Today'}
         noTasksString={'for today'}
