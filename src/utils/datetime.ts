@@ -1,11 +1,17 @@
 export const isToday = (date: Date) => {
-  return date.getDate() === new Date().getDate();
+  return date === new Date();
 };
 
 export const isThisWeek = (date: Date) => {
-  return date.getDate() > new Date().getDate() && date.getDate() < (new Date().getDate() + 7);
+  const currentDate = new Date();
+  const datePlusSeven = new Date(currentDate.setDate(currentDate.getDate() + 7));
+  return date > new Date() && date < datePlusSeven;
 };
 
 export const isFarAway = (date: Date) => {
   return !(isToday(date) || isThisWeek(date));
+};
+
+export const isPassed = (date: Date) => {
+  return (date < new Date());
 };
