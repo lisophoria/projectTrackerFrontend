@@ -5,5 +5,5 @@ export interface ITask {
   taskName?: string;
   description?: string;
   status?: boolean;
-  date?: Date;
+  date?: string;
 }

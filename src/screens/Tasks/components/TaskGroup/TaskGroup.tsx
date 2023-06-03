@@ -22,6 +22,7 @@ const TaskGroup: FC<ITaskGroupProps> = (props) => {
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
           {props.tasks.map((item) => (
             <TaskCard
+              key={item.taskId!}
               task={item}
               onChange={props.onChange}
             />

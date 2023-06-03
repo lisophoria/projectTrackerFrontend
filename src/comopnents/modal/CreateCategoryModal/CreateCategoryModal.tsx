@@ -8,7 +8,7 @@ import { setField } from 'utils/setField';
 interface IEditCategoryModal {
   open: boolean;
   onClose: () => void;
-  onConfirmClick: () => void;
+  onConfirmClick: (item: ICategory) => void;
 }
 
 const CreateCategoryModal: FC<IEditCategoryModal> = (props) => {
@@ -31,7 +31,7 @@ const CreateCategoryModal: FC<IEditCategoryModal> = (props) => {
         {
           styleType: ButtonTypes.PRIMARY,
           title: 'Confirm',
-          onClick: props.onConfirmClick,
+          onClick: () => props.onConfirmClick(data),
         },
         {
           styleType: ButtonTypes.SECONDARY,

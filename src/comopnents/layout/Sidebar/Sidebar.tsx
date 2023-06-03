@@ -4,13 +4,11 @@ import Categories from 'comopnents/layout/Sidebar/components/categories';
 import { Box } from '@mui/material';
 import Button from 'comopnents/ui/Button';
 import { ButtonTypes } from 'comopnents/ui/Button/Button.types';
-import { ICategory } from 'store/model/category';
 
 interface ISidebarProps {
   onLogoutClick: () => void;
   onAddCategoryClick: () => void;
   onCreateTaskClick: () => void;
-  categories?: ICategory[];
 }
 
 const Sidebar: FC<ISidebarProps> = (props) => {
@@ -38,11 +36,7 @@ const Sidebar: FC<ISidebarProps> = (props) => {
               overflow: 'auto',
             }}
           >
-            {props.categories && (
-              <Categories
-                categories={props.categories}
-              />
-            )}
+            <Categories />
           </Box>
           <Box
             sx={{

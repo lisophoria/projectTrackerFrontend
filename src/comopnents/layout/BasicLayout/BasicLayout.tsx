@@ -1,14 +1,22 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren, useState } from 'react';
 import AbstractLayout from 'comopnents/abstract/AbstractLayout';
 import { Box } from '@mui/material';
 import Sidebar from 'comopnents/layout/Sidebar';
-import { ICategory } from 'store/model/category';
+import { ITask } from 'store/model/task';
+import { useAppDispatch } from 'store/hooks';
+import { createTask } from 'store/slice/tasks.slice';
+import EditTaskModal from 'comopnents/modal/EditTaskModal';
 
-interface IBasicLayoutProps {
-  categories?: ICategory[];
-}
+const BasicLayout: FC<PropsWithChildren> = (props) => {
+  const dispatch = useAppDispatch();
 
-const BasicLayout: FC<PropsWithChildren<IBasicLayoutProps>> = (props) => {
+  const [isEditTaskModalOpen, setEditTaskModalOpen] = useState<boolean>(false);
+
+  const handleSaveTaskClick = (value: ITask) => {
+    dispatch(createTask(value));
+    // TODO: Сохранить на беке
+  };
+
   return (
     <>
       <Box
@@ -23,8 +31,7 @@ const BasicLayout: FC<PropsWithChildren<IBasicLayoutProps>> = (props) => {
             <Sidebar
               onLogoutClick={() => { /* TODO */ }}
               onAddCategoryClick={() => { /* TODO */ }}
-              onCreateTaskClick={() => { /* TODO */ }}
-              categories={props.categories}
+              onCreateTaskClick={() => setEditTaskModalOpen(true)}
             />
           )}
         >
@@ -40,6 +47,12 @@ const BasicLayout: FC<PropsWithChildren<IBasicLayoutProps>> = (props) => {
           </Box>
         </AbstractLayout>
       </Box>
+      <EditTaskModal
+        open={isEditTaskModalOpen}
+        onClose={() => setEditTaskModalOpen(false)}
+        onSaveClick={handleSaveTaskClick}
+        task={{}}
+      />
     </>
   );
 };

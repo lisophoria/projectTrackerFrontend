@@ -14,7 +14,7 @@ const initialState: ITasksState = {
       taskName: 'Create first task',
       description: 'test description',
       status: true,
-      date: new Date('2023-05-28'),
+      date: new Date('2023-05-28').toDateString(),
     },
     {
       taskId: 2,
@@ -23,7 +23,7 @@ const initialState: ITasksState = {
       taskName: 'Second task',
       description: 'description for second task',
       status: false,
-      date: new Date('2023-05-29'),
+      date: new Date('2023-05-29').toDateString(),
     },
     {
       taskId: 3,
@@ -32,7 +32,7 @@ const initialState: ITasksState = {
       taskName: 'Good 1',
       description: 'test description',
       status: true,
-      date: new Date('2023-05-28'),
+      date: new Date('2023-06-03').toDateString(),
     },
     {
       taskId: 4,
@@ -41,7 +41,7 @@ const initialState: ITasksState = {
       taskName: 'Good 2',
       description: 'description for second task',
       status: false,
-      date: new Date('2023-06-25'),
+      date: new Date('2023-06-25').toDateString(),
     },
     {
       taskId: 5,
@@ -50,7 +50,7 @@ const initialState: ITasksState = {
       taskName: 'Create first task',
       description: 'test description',
       status: true,
-      date: new Date('2023-06-25'),
+      date: new Date('2023-06-25').toDateString(),
     },
     {
       taskId: 6,
@@ -59,7 +59,7 @@ const initialState: ITasksState = {
       taskName: 'Second task',
       description: 'description for second task',
       status: false,
-      date: new Date('2023-06-25'),
+      date: new Date('2023-06-25').toDateString(),
     },
     {
       taskId: 7,
@@ -68,7 +68,7 @@ const initialState: ITasksState = {
       taskName: 'Good 1',
       description: 'test description',
       status: true,
-      date: new Date('2023-06-25'),
+      date: new Date('2023-06-25').toDateString(),
     },
     {
       taskId: 8,
@@ -77,7 +77,7 @@ const initialState: ITasksState = {
       taskName: 'Good 2',
       description: 'description for second task',
       status: false,
-      date: new Date('2023-06-25'),
+      date: new Date('2023-06-25').toDateString(),
     },
   ],
 };
@@ -92,11 +92,33 @@ const tasksSlice = createSlice({
         tasks: action.payload,
       };
     },
+    updateTask: (state, action: PayloadAction<ITask>) => {
+      return {
+        ...state,
+        tasks: state.tasks.map((item) => (item.taskId === action.payload.taskId
+          ? action.payload
+          : item)),
+      };
+    },
+    createTask: (state, action: PayloadAction<ITask>) => {
+      return {
+        ...state,
+        tasks: [...state.tasks, action.payload],
+      };
+    },
+    deleteTask: (state, action: PayloadAction<number>) => {
+      return {
+        ...state,
+        tasks: state.tasks.filter((item) => item?.taskId !== action.payload),
+      };
+    },
     clearTasks: () => {
       return initialState;
     },
   },
 });
 
-export const { setTasks, clearTasks } = tasksSlice.actions;
+export const {
+  setTasks, clearTasks, createTask, updateTask, deleteTask,
+} = tasksSlice.actions;
 export default tasksSlice.reducer;
