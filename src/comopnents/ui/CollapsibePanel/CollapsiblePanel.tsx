@@ -7,6 +7,7 @@ import useCollapsiblePanelStyles from './CollapsiblePanel.styles';
 
 interface ICollapsiblePanelProps {
   name?: string;
+  defaultClosed?: boolean;
 }
 
 const CollapsiblePanel: FC<PropsWithChildren<ICollapsiblePanelProps>> = (props) => {
@@ -15,7 +16,8 @@ const CollapsiblePanel: FC<PropsWithChildren<ICollapsiblePanelProps>> = (props) 
   return (
     <Accordion
       className={classes.collapsiblePanelWrapper}
-      defaultExpanded
+      defaultExpanded={!props.defaultClosed}
+      disableGutters
     >
       <AccordionSummary
         expandIcon={<ExpandMoreRounded />}
