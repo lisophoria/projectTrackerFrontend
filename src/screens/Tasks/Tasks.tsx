@@ -12,6 +12,7 @@ interface ITasksProps {
 }
 
 const Tasks: FC<ITasksProps> = (props) => {
+  // TODO 03.06.2023: Рефакторинг
   const todayTasks = (props.tasks ?? []).filter((item) => isToday(item.date!));
   const weekTasks = (props.tasks ?? []).filter((item) => isThisWeek(item.date!));
   const farAwayTasks = (props.tasks ?? []).filter((item) => isFarAway(item.date!));
