@@ -1,11 +1,21 @@
+const clearTime = (date: Date) => {
+  return date.setHours(0, 0, 0, 0);
+};
+
 export const isToday = (date: Date) => {
-  return date.getDate() === new Date().getDate();
+  return clearTime(date) === clearTime(new Date());
 };
 
 export const isThisWeek = (date: Date) => {
-  return date.getDate() > new Date().getDate() && date.getDate() < (new Date().getDate() + 7);
+  const currentDate = new Date();
+  const datePlusSeven = new Date(currentDate.setDate(currentDate.getDate() + 7));
+  return clearTime(date) > clearTime(new Date()) && clearTime(date) < clearTime(datePlusSeven);
 };
 
 export const isFarAway = (date: Date) => {
-  return !(isToday(date) || isThisWeek(date));
+  return !(date <= new Date() || isThisWeek(date));
+};
+
+export const isPassed = (date: Date) => {
+  return (date < new Date());
 };

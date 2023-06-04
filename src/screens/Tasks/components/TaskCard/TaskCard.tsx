@@ -13,6 +13,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import AbstractPanelWithActions from 'comopnents/abstract/AbstractPanelWithActions';
 import ConfirmDeleteModal from 'comopnents/modal/ConfirmDeleteModal';
 import EditTaskModal from 'comopnents/modal/EditTaskModal';
+import { useAppDispatch } from 'store/hooks';
+import { deleteTask, updateTask } from 'store/slice/tasks.slice';
 
 interface ITaskCardProps {
   task: ITask;
@@ -20,6 +22,8 @@ interface ITaskCardProps {
 }
 
 const TaskCard: FC<ITaskCardProps> = (props) => {
+  const dispatch = useAppDispatch();
+
   const [task, setTask] = useState<ITask>(props.task);
   const [isConfirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState<boolean>(false);
   const [isEditTaskModalOpen, setEditTaskModalOpen] = useState<boolean>(false);
@@ -35,7 +39,14 @@ const TaskCard: FC<ITaskCardProps> = (props) => {
 
   const handleSaveClick = (value: ITask) => {
     setTask(((prevState) => ({ ...value, status: prevState.status })));
+    dispatch(updateTask(value));
     setEditTaskModalOpen(false);
+  };
+
+  const handleDeleteClick = () => {
+    dispatch(deleteTask(task.taskId!));
+    setConfirmDeleteModalOpen(false);
+    // TODO: Сохранить на бек
   };
 
   return (
@@ -72,7 +83,7 @@ const TaskCard: FC<ITaskCardProps> = (props) => {
       <ConfirmDeleteModal
         open={isConfirmDeleteModalOpen}
         onClose={() => setConfirmDeleteModalOpen(false)}
-        onDeleteClick={() => { /* TODO */ }}
+        onDeleteClick={handleDeleteClick}
         nameOfDeletingObject={task.taskName ?? 'task'}
       />
       <EditTaskModal

@@ -1,4 +1,6 @@
-import { ChangeEvent, FC, useState } from 'react';
+import {
+  ChangeEvent, FC, useEffect, useState,
+} from 'react';
 import AbstractModal from 'comopnents/abstract/AbstractModal';
 import { ButtonTypes } from 'comopnents/ui/Button/Button.types';
 import { Box, TextField } from '@mui/material';
@@ -9,7 +11,7 @@ interface IEditCategoryModal {
   category: ICategory;
   open: boolean;
   onClose: () => void;
-  onConfirmClick: () => void;
+  onConfirmClick: (item: ICategory) => void;
 }
 
 const EditCategoryModal: FC<IEditCategoryModal> = (props) => {
@@ -23,6 +25,14 @@ const EditCategoryModal: FC<IEditCategoryModal> = (props) => {
     handleChange('categoryName', event.target.value);
   };
 
+  useEffect(() => {
+    setData(props.category);
+  }, [props.category]);
+
+  const handleSaveClick = () => {
+    props.onConfirmClick(data);
+  };
+
   return (
     <AbstractModal
       open={props.open}
@@ -32,7 +42,7 @@ const EditCategoryModal: FC<IEditCategoryModal> = (props) => {
         {
           styleType: ButtonTypes.PRIMARY,
           title: 'Confirm',
-          onClick: props.onConfirmClick,
+          onClick: handleSaveClick,
         },
         {
           styleType: ButtonTypes.SECONDARY,

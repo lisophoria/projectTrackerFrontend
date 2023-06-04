@@ -1,22 +1,28 @@
 import { FC, useState } from 'react';
-import { ICategory } from 'store/model/category';
 import {
-  Box, IconButton, SxProps, Typography, 
+  Box, IconButton, Typography,
 } from '@mui/material';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import CategoryBlock from 'comopnents/layout/Sidebar/components/categoryBlock';
 import CreateCategoryModal from 'comopnents/modal/CreateCategoryModal';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { ICategory } from 'store/model/category';
+import { createCategory } from 'store/slice/categories.slice';
 import useCategoriesStyles from './Categories.styles';
 
-interface ICategoriesProps {
-  categories?: ICategory[];
-  sx?: SxProps;
-}
-
-const Categories: FC<ICategoriesProps> = (props) => {
+const Categories: FC = () => {
   const { classes } = useCategoriesStyles();
+  const dispatch = useAppDispatch();
+
+  const { categories } = useAppSelector((state) => state.categories);
 
   const [isCreateCategoryModalOpen, setCreateCategoryModalOpen] = useState<boolean>(false);
+
+  const handleConfirmCreateClick = (item: ICategory) => {
+    dispatch(createCategory(item));
+    setCreateCategoryModalOpen(false);
+    // TODO: сохранить на бек
+  };
 
   return (
     <>
@@ -38,13 +44,12 @@ const Categories: FC<ICategoriesProps> = (props) => {
         </IconButton>
       </Box>
       <Box className={classes.categoriesListWrapper}>
-        {props.categories ? (
-          props.categories.map((item) => (
+        {categories ? (
+          categories.map((item) => (
             <CategoryBlock
+              key={item.categoryId}
               onSelectChange={() => { /* TODO */ }}
-              item={{
-                categoryName: item.categoryName,
-              }}
+              item={item}
             />
           ))
         ) : (
@@ -56,7 +61,7 @@ const Categories: FC<ICategoriesProps> = (props) => {
       <CreateCategoryModal
         open={isCreateCategoryModalOpen}
         onClose={() => setCreateCategoryModalOpen(false)}
-        onConfirmClick={() => { /* TODO */ }}
+        onConfirmClick={handleConfirmCreateClick}
       />
     </>
   );
