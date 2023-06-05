@@ -18,7 +18,6 @@ import { deleteTask, updateTask } from 'store/slice/tasks.slice';
 
 interface ITaskCardProps {
   task: ITask;
-  onChange: (value: ITask) => void;
 }
 
 const TaskCard: FC<ITaskCardProps> = (props) => {
@@ -34,7 +33,7 @@ const TaskCard: FC<ITaskCardProps> = (props) => {
 
   const handleCheckEvent = (e: ChangeEvent<HTMLInputElement>) => {
     handleChange('status', e.target.checked);
-    props.onChange(task);
+    // props.onChange(task);
   };
 
   const handleSaveClick = (value: ITask) => {

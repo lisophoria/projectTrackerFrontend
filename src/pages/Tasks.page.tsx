@@ -1,13 +1,23 @@
-import Tasks from 'screens/Tasks';
-import { useGetCategoriesByUserIdQuery } from 'store/api/category.api';
+import { Box } from '@mui/material';
+import { useAppSelector } from 'store/hooks';
+import TasksCategoryPage from './TasksCategory.page';
 
 const TasksPage = () => {
-  useGetCategoriesByUserIdQuery(2);
+  const { categories } = useAppSelector((state) => state.categories);
 
   return (
-    <Tasks
-      onChange={() => { /* TODO */ }}
-    />
+    <Box
+      sx={{
+        height: '100%',
+        overflow: 'overlay',
+      }}
+    >
+      {categories.map((item) => (
+        item && (
+          <TasksCategoryPage category={item} />
+        )
+      ))}
+    </Box>
   );
 };
 
