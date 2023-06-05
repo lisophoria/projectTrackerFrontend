@@ -7,8 +7,8 @@ const globalApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl,
     prepareHeaders: (headers, { getState }) => {
-      const { accessToken } = (getState() as RootState).user;
-      if (accessToken) headers.set('Authorization', `Bearer ${accessToken}`);
+      const { tokens } = (getState() as RootState).user;
+      if (tokens?.accessToken) headers.set('Authorization', `Bearer ${tokens.accessToken}`);
       headers.set('Access-Control-Allow-Origin', '*');
       headers.set('Content-Type', 'application/json');
       return headers;

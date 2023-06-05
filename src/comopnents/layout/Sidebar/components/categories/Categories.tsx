@@ -5,23 +5,27 @@ import {
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import CategoryBlock from 'comopnents/layout/Sidebar/components/categoryBlock';
 import CreateCategoryModal from 'comopnents/modal/CreateCategoryModal';
-import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { useAppSelector } from 'store/hooks';
 import { ICategory } from 'store/model/category';
-import { createCategory } from 'store/slice/categories.slice';
+import { useSaveCategoryMutation } from 'store/api/category.api';
 import useCategoriesStyles from './Categories.styles';
 
 const Categories: FC = () => {
   const { classes } = useCategoriesStyles();
-  const dispatch = useAppDispatch();
+
+  const [saveCategory] = useSaveCategoryMutation();
 
   const { categories } = useAppSelector((state) => state.categories);
+  const { tokens } = useAppSelector((state) => state.user);
 
   const [isCreateCategoryModalOpen, setCreateCategoryModalOpen] = useState<boolean>(false);
 
-  const handleConfirmCreateClick = (item: ICategory) => {
-    dispatch(createCategory(item));
+  const handleConfirmCreateClick = async (item: ICategory) => {
+    await saveCategory({
+      ...item,
+      userId: tokens?.userId!,
+    });
     setCreateCategoryModalOpen(false);
-    // TODO: сохранить на бек
   };
 
   return (

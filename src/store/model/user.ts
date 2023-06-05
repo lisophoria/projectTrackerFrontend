@@ -17,4 +17,5 @@ export interface IUserCredentials {
 export interface IUserTokens {
   accessToken?: string;
   refreshToken?: string;
+  userId?: number;
 }

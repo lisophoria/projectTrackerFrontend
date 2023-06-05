@@ -3,11 +3,11 @@ import BasicLayout from 'comopnents/layout/BasicLayout';
 import { useAppSelector } from 'store/hooks';
 
 const BasicLayoutPage = () => {
-  const { accessToken } = useAppSelector((state) => state.user);
+  const { tokens } = useAppSelector((state) => state.user);
 
   return (
     <BasicLayout>
-      {accessToken ? (
+      {tokens?.accessToken ? (
         <Outlet />
       ) : (
         <Navigate to={'/login'} />

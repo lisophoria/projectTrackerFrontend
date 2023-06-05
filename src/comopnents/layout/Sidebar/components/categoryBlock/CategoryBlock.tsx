@@ -8,8 +8,7 @@ import { Checkbox, FormControlLabel } from '@mui/material';
 import AbstractPanelWithActions from 'comopnents/abstract/AbstractPanelWithActions';
 import ConfirmDeleteModal from 'comopnents/modal/ConfirmDeleteModal';
 import EditCategoryModal from 'comopnents/modal/EditCategoryModal';
-import { useAppDispatch } from 'store/hooks';
-import { deleteCategory, updateCategory } from 'store/slice/categories.slice';
+import { useDeleteCategoryByIdMutation, useSaveCategoryMutation } from 'store/api/category.api';
 
 interface ICategoryBlockProps {
   item: ICategory;
@@ -17,7 +16,8 @@ interface ICategoryBlockProps {
 }
 
 const CategoryBlock: FC<ICategoryBlockProps> = (props) => {
-  const dispatch = useAppDispatch();
+  const [del] = useDeleteCategoryByIdMutation();
+  const [upd] = useSaveCategoryMutation();
 
   const [isConfirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState<boolean>(false);
   const [isEditCategoryModalOpen, setEditCategoryModalOpen] = useState<boolean>(false);
@@ -26,13 +26,13 @@ const CategoryBlock: FC<ICategoryBlockProps> = (props) => {
     props.onSelectChange(e.target.checked);
   };
 
-  const handleDeleteClick = () => {
-    dispatch(deleteCategory(props.item.categoryId!));
+  const handleDeleteClick = async () => {
+    await del(props.item.categoryId!);
     setConfirmDeleteModalOpen(false);
   };
 
-  const handleSaveClick = (item: ICategory) => {
-    dispatch(updateCategory(item));
+  const handleSaveClick = async (item: ICategory) => {
+    await upd(item);
     setEditCategoryModalOpen(false);
   };
   

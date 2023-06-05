@@ -1,5 +1,5 @@
 import { IUserCredentials, IUserTokens, IUserWithPassword } from 'store/model/user';
-import { setAccessToken } from 'store/slice/user.slice';
+import { setUserTokens } from 'store/slice/user.slice';
 import globalApi from './global.api';
 
 const loginApi = globalApi.injectEndpoints({
@@ -13,8 +13,8 @@ const loginApi = globalApi.injectEndpoints({
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const response = await queryFulfilled;
-          if (response.data.accessToken) {
-            dispatch(setAccessToken(response.data.accessToken));
+          if (response.data) {
+            dispatch(setUserTokens(response.data));
           }
         } catch (e) {
           console.error(e);
@@ -30,8 +30,8 @@ const loginApi = globalApi.injectEndpoints({
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const response = await queryFulfilled;
-          if (response.data.accessToken) {
-            dispatch(setAccessToken(response.data.accessToken));
+          if (response.data) {
+            dispatch(setUserTokens(response.data));
           }
         } catch (e) {
           console.error(e);
