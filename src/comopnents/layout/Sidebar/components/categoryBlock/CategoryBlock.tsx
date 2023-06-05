@@ -1,10 +1,10 @@
 import {
-  ChangeEvent, FC, useState,
+  FC, useState,
 } from 'react';
 import { ICategory } from 'store/model/category';
 import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
-import { Checkbox, FormControlLabel } from '@mui/material';
+import { Typography } from '@mui/material';
 import AbstractPanelWithActions from 'comopnents/abstract/AbstractPanelWithActions';
 import ConfirmDeleteModal from 'comopnents/modal/ConfirmDeleteModal';
 import EditCategoryModal from 'comopnents/modal/EditCategoryModal';
@@ -21,10 +21,6 @@ const CategoryBlock: FC<ICategoryBlockProps> = (props) => {
 
   const [isConfirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState<boolean>(false);
   const [isEditCategoryModalOpen, setEditCategoryModalOpen] = useState<boolean>(false);
-
-  const onSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
-    props.onSelectChange(e.target.checked);
-  };
 
   const handleDeleteClick = async () => {
     await del(props.item.categoryId!);
@@ -50,15 +46,7 @@ const CategoryBlock: FC<ICategoryBlockProps> = (props) => {
           },
         ]}
       >
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked
-              onChange={onSelectChange}
-            />
-          )}
-          label={props.item.categoryName}
-        />
+        <Typography>{props.item.categoryName}</Typography>
       </AbstractPanelWithActions>
       <ConfirmDeleteModal
         open={isConfirmDeleteModalOpen}
