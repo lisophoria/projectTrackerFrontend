@@ -4,7 +4,7 @@ import AbstractBlockWithButtons from 'comopnents/abstract/AbstractBlockWithButto
 import { ButtonTypes } from 'comopnents/ui/Button/Button.types';
 import { IUserCredentials, IUserWithPassword } from 'store/model/user';
 import image from 'assets/img/background-image.jpg';
-import { useLoginMutation } from 'store/api/login.api';
+import { useLoginMutation, useRegisterMutation } from 'store/api/login.api';
 import { useNavigate } from 'react-router-dom';
 
 enum FormType {
@@ -14,16 +14,24 @@ enum FormType {
 
 const Login: FC = () => {
   const [login] = useLoginMutation();
-  const naviage = useNavigate();
+  const [register] = useRegisterMutation();
+  const navigate = useNavigate();
 
   const [formType, setFormType] = useState<FormType>(FormType.LOGIN);
-  const [registerForm] = useState<IUserWithPassword>({});
+  const [registerForm, setRegisterForm] = useState<IUserWithPassword>({});
   const [loginForm, setLoginForm] = useState<IUserCredentials>(
     {
       email: 'victor.astakhov@gmail.com',
       password: '12345',
     },
   );
+
+  const onRegisterFormChange = (field: string, value: string) => {
+    setRegisterForm((prevState) => ({
+      ...prevState,
+      [field]: value,
+    }));
+  };
 
   const onLoginFormChange = (field: string, value: string) => {
     setLoginForm((prevState) => ({
@@ -32,10 +40,14 @@ const Login: FC = () => {
     }));
   };
 
-  // const onRegisterClick = () => setLogin(FormType.REGISTER);
+  const onRegisterClick = async () => {
+    await register(registerForm);
+    navigate('/');
+  };
+
   const onLoginClick = async () => {
     await login(loginForm);
-    naviage('/');
+    navigate('/');
   };
 
   const FormButtonsByFormType = {
@@ -54,7 +66,7 @@ const Login: FC = () => {
     [FormType.REGISTER]: [
       {
         styleType: ButtonTypes.PRIMARY,
-        onClick: () => console.log(registerForm),
+        onClick: onRegisterClick,
         title: 'register',
       },
       {
@@ -111,6 +123,47 @@ const Login: FC = () => {
               type={'password'}
               value={loginForm.password}
               onInput={(e: ChangeEvent<HTMLInputElement>) => onLoginFormChange('password', e.target.value)}
+            />
+          </Box>
+        )}
+        {formType === FormType.REGISTER && (
+          <Box
+            component={'form'}
+            noValidate
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '20px',
+            }}
+          >
+            <TextField
+              sx={{ width: '100%' }}
+              label={'email'}
+              variant={'outlined'}
+              value={registerForm.email}
+              onInput={(e: ChangeEvent<HTMLInputElement>) => onRegisterFormChange('email', e.target.value)}
+            />
+            <TextField
+              sx={{ width: '100%' }}
+              label={'password'}
+              variant={'outlined'}
+              type={'password'}
+              value={registerForm.password}
+              onInput={(e: ChangeEvent<HTMLInputElement>) => onRegisterFormChange('password', e.target.value)}
+            />
+            <TextField
+              sx={{ width: '100%' }}
+              label={'firstname'}
+              variant={'outlined'}
+              value={registerForm.firstname}
+              onInput={(e: ChangeEvent<HTMLInputElement>) => onRegisterFormChange('firstname', e.target.value)}
+            />
+            <TextField
+              sx={{ width: '100%' }}
+              label={'lastname'}
+              variant={'outlined'}
+              value={registerForm.lastname}
+              onInput={(e: ChangeEvent<HTMLInputElement>) => onRegisterFormChange('lastname', e.target.value)}
             />
           </Box>
         )}
