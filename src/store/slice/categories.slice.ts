@@ -6,20 +6,7 @@ interface ICategoryState {
 }
 
 const initialState: ICategoryState = {
-  categories: [
-    {
-      categoryId: 1,
-      categoryName: 'Personal',
-    },
-    {
-      categoryId: 2,
-      categoryName: 'Job',
-    },
-    {
-      categoryId: 3,
-      categoryName: 'Other',
-    },
-  ],
+  categories: [],
 };
 
 const categoriesSlice = createSlice({
