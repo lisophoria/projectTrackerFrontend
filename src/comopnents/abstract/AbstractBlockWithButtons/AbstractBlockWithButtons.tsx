@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, SxProps, Typography } from '@mui/material';
 import Button from 'comopnents/ui/Button';
 import { IButtonProps } from 'comopnents/ui/Button/Button';
 import useAbstractBlockWithButtonsStyles from './AbstractBlockWithButtons.styles';
@@ -9,6 +9,7 @@ export interface IAbstractBlockWithButtonsProps {
   height?: number;
   heading?: string;
   buttons?: IButtonProps[];
+  sx?: SxProps;
 }
 
 const AbstractBlockWithButtons: FC<PropsWithChildren<IAbstractBlockWithButtonsProps>> = (props) => {
@@ -20,6 +21,7 @@ const AbstractBlockWithButtons: FC<PropsWithChildren<IAbstractBlockWithButtonsPr
       sx={{
         height: props.height ?? 'fit-content',
         width: props.width ?? 300,
+        ...props.sx,
       }}
     >
       <Typography

@@ -1,10 +1,10 @@
-import {createTheme} from "@mui/material";
+import { createTheme } from '@mui/material';
 
 const theme = createTheme(({
   typography: {
     allVariants: {
       color: '#172B4D',
-      fontFamily: 'Manrope'
+      fontFamily: 'Manrope',
     },
     button: {
       textTransform: 'none',
@@ -18,17 +18,17 @@ const theme = createTheme(({
           ':hover': {
             transform: 'scale(1)',
             boxShadow: 'none',
-          }
-        }
-      }
+          },
+        },
+      },
     },
     MuiIconButton: {
       styleOverrides: {
         root: {
           boxShadow: 'none',
-        }
-      }
-    }
+        },
+      },
+    },
   },
 }));
 

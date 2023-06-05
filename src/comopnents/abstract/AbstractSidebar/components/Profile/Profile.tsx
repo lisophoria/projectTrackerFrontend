@@ -34,20 +34,22 @@ const Profile: FC<IProfileProps> = (props) => {
     >
       <Box className={classes.infoWrapper}>
         <Avatar sx={{ backgroundColor: '#0767DB' }}>
-          {user.username ? user.username[0] : 'U'}
+          {user.firstname ? user.firstname[0] : 'U'}
         </Avatar>
         <Box>
           <Typography
             fontSize={16}
             fontWeight={'bold'}
           >
-            {user.username ?? 'User Name'}
+            {user.firstname ?? 'User'}
+            {' '}
+            {user.lastname ?? 'Name'}
           </Typography>
           <Typography
             fontSize={14}
             color={'#888888'}
           >
-            {'Just user'}
+            {user.email ?? 'example@mail.com'}
           </Typography>
         </Box>
       </Box>
