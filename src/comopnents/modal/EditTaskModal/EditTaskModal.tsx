@@ -1,9 +1,12 @@
 import { ChangeEvent, FC, useState } from 'react';
-import { Box, TextField } from '@mui/material';
+import {
+  Box, MenuItem, Select, SelectChangeEvent, TextField,
+} from '@mui/material';
 import { ITask } from 'store/model/task';
 import AbstractModal from 'comopnents/abstract/AbstractModal';
 import { ButtonTypes } from 'comopnents/ui/Button/Button.types';
 import { setField } from 'utils/setField';
+import { useAppSelector } from 'store/hooks';
 
 interface IEditTaskModalProps {
   open: boolean;
@@ -14,6 +17,8 @@ interface IEditTaskModalProps {
 
 const EditTaskModal: FC<IEditTaskModalProps> = (props) => {
   const [task, setTask] = useState<ITask>(props.task);
+
+  const { categories } = useAppSelector((state) => state.categories);
 
   const handleChange = (field: string, value: any) => {
     setField(task, field, value, setTask);
@@ -51,6 +56,14 @@ const EditTaskModal: FC<IEditTaskModalProps> = (props) => {
           gap: '18px',
         }}
       >
+        <Select
+          value={task.categoryId}
+          onChange={(event: SelectChangeEvent<number>) => handleChange('categoryId', event.target.value)}
+        >
+          {categories.map((item) => (
+            <MenuItem key={item.categoryId!} value={item.categoryId!}>{item.categoryName}</MenuItem>
+          ))}
+        </Select>
         <TextField
           sx={{ width: '100%' }}
           label={'Name'}

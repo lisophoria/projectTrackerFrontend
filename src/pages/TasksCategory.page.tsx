@@ -12,10 +12,10 @@ const TasksCategoryPage: FC<ITaskCategoryPage> = (props) => {
   const { data, isLoading } = useGetTasksByCategoryIdQuery(props.category.categoryId!);
 
   return (
-    (!isLoading && data) ? (
+    !isLoading ? (
       <Tasks
         categoryName={props.category.categoryName}
-        tasks={data!}
+        tasks={data ?? []}
       />
     ) : (
       <Typography>loading</Typography>

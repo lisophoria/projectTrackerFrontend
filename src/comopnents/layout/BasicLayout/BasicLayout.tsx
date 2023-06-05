@@ -3,18 +3,16 @@ import AbstractLayout from 'comopnents/abstract/AbstractLayout';
 import { Box } from '@mui/material';
 import Sidebar from 'comopnents/layout/Sidebar';
 import { ITask } from 'store/model/task';
-import { useAppDispatch } from 'store/hooks';
-import { createTask } from 'store/slice/tasks.slice';
 import EditTaskModal from 'comopnents/modal/EditTaskModal';
+import { useSaveTaskMutation } from 'store/api/task.api';
 
 const BasicLayout: FC<PropsWithChildren> = (props) => {
-  const dispatch = useAppDispatch();
-
   const [isEditTaskModalOpen, setEditTaskModalOpen] = useState<boolean>(false);
+  const [saveTask] = useSaveTaskMutation();
 
   const handleSaveTaskClick = (value: ITask) => {
-    dispatch(createTask(value));
-    // TODO: Сохранить на беке
+    saveTask(value);
+    setEditTaskModalOpen(false);
   };
 
   return (
